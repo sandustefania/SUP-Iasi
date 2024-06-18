@@ -60,9 +60,10 @@ ul {
     li .remove-button {
         border-radius: 1rem;
         border: none;
-        padding: 0.5rem;
-        color: var(--dark-blue);
-        cursor: pointer
+        padding: 10px;
+        color: rgb(227, 56, 56);
+        cursor: pointer;
+        font-size: 32px;
     }
 }
 
