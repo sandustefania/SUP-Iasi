@@ -1,23 +1,22 @@
 import { Component } from '@angular/core';
-import { RestaurantService } from '../../../services/restaurant.service';
+import { SupService } from '../../../services/sup.service';
 import { CommonModule } from '@angular/common';
 import { IContactUs } from '../../../shared/interfaces/IContactUs';
-import { TitleComponent } from '../../partials/title/title.component';
 
 @Component({
   selector: 'app-view-messages-page',
   standalone: true,
-  imports: [CommonModule, TitleComponent],
+  imports: [CommonModule],
   templateUrl: './view-messages-page.component.html',
   styleUrl: './view-messages-page.component.scss',
 })
 export class ViewMessagesPageComponent {
   messages: IContactUs[] = [];
 
-  constructor(private restaurantService: RestaurantService) {}
+  constructor(private supService: SupService) {}
 
   ngOnInit() {
-    this.restaurantService
+    this.supService
       .getMessages()
       .subscribe((serverMessages) => (this.messages = serverMessages));
   }

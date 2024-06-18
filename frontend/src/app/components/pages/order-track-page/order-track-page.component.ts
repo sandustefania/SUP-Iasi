@@ -4,12 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { OrderService } from '../../../services/order.service';
 import { CommonModule } from '@angular/common';
 import { OrderItemsListComponent } from '../../partials/order-items-list/order-items-list.component';
-import { TitleComponent } from '../../partials/title/title.component';
 
 @Component({
   selector: 'app-order-track-page',
   standalone: true,
-  imports: [CommonModule, OrderItemsListComponent, TitleComponent],
+  imports: [CommonModule, OrderItemsListComponent],
   templateUrl: './order-track-page.component.html',
   styleUrl: './order-track-page.component.scss',
 })

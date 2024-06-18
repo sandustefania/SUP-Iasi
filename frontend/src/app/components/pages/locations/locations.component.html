@@ -6,27 +6,24 @@
     width="1000px"
     [center]="center"
     [zoom]="zoom"
-    (mapClick)="moveMap($event)"
-    (mapMousemove)="move($event)"
   >
     <map-marker [position]="center"></map-marker>
   </google-map>
 
-  <!-- <div>Latitude: {{ display.lat }}</div>
-<div>Longitude: {{ display.lng }}</div> -->
-
   <div class="weather">
-    <h2 *ngIf="weatherData">{{ weatherData.name }}</h2>
+    <h1 *ngIf="weatherData">{{ weatherData.name }}</h1>
     <h3 *ngIf="weatherData">{{ weatherData.weather[0].description }}</h3>
 
-    <h1 *ngIf="weatherData">{{ weatherData.main.temp }} &deg;C</h1>
+    <div style="display: flex; justify-content: center; align-items: center">
+      <h1 *ngIf="weatherData">{{ weatherData.main.temp }} &deg;C</h1>
+      &nbsp;&nbsp;&nbsp;
+      <img
+        [src]="getWeatherIconUrl(weatherData.weather[0].icon)"
+        alt="Weather Icon"
+      />
+    </div>
 
-    <img
-      [src]="getWeatherIconUrl(weatherData.weather[0].icon)"
-      alt="Weather Icon"
-    />
-
-    <h2 *ngIf="weatherData">Wind {{ weatherData.wind.speed }} MPH</h2>
-    <h2 *ngIf="weatherData">Humidity {{ weatherData.main.humidity }} %</h2>
+    <h3 *ngIf="weatherData">Wind {{ weatherData.wind.speed }} MPH</h3>
+    <h3 *ngIf="weatherData">Humidity {{ weatherData.main.humidity }} %</h3>
   </div>
 </div>

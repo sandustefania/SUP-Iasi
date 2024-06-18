@@ -5,12 +5,12 @@ dotenv.config();
 
 import express from "express";
 import cors from "cors";
-import foodRouter from "./routers/food.router";
 import userRouter from "./routers/user.router";
 import { dbConnect } from "./configs/database.config";
 import orderRouter from "./routers/order.router";
-import restaurantRouter from "./routers/restaurant.router";
+import supRouter from "./routers/sup.router";
 import path from "path";
+import eventRouter from "./routers/event.router";
 const multer = require("multer");
 
 dbConnect();
@@ -28,10 +28,10 @@ app.use(
   })
 );
 
-app.use("/api/foods", foodRouter);
+app.use("/api/events", eventRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
-app.use("/api/restaurant", restaurantRouter);
+app.use("/api/sup", supRouter);
 
 app.use(express.static("public/browser"));
 app.get("*", (req, res) => {

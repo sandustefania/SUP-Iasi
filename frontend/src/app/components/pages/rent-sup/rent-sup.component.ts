@@ -11,7 +11,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RestaurantService } from '../../../services/restaurant.service';
+import { SupService } from '../../../services/sup.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../../shared/models/User';
 import { formatDate } from '@angular/common';
@@ -36,7 +36,7 @@ export class RentSupComponent {
   minDate: Date;
   constructor(
     private formBuilder: FormBuilder,
-    private restaurantService: RestaurantService,
+    private supService: SupService,
     private toastrService: ToastrService,
     private userService: UserService
   ) {
@@ -68,7 +68,7 @@ export class RentSupComponent {
     formValue.selectedDate = this.formatDate(formValue.selectedDate);
     // const dateValue = formValue.selectedDate;
 
-    this.restaurantService
+    this.supService
       .addRentSups({
         numberSups: this.fc.numberSups.value,
         selectedDate: this.fc.selectedDate.value,
@@ -96,7 +96,7 @@ export class RentSupComponent {
   }
 
   checkSupsAvailable(date: any) {
-    this.restaurantService.getSupsAvailable(date).subscribe((serverNrSup) => {
+    this.supService.getSupsAvailable(date).subscribe((serverNrSup) => {
       this.numberSupsAvailable = serverNrSup;
     });
   }

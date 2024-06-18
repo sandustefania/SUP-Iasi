@@ -1,28 +1,26 @@
-<!-- <app-search-bar></app-search-bar>
-<app-tags></app-tags> -->
 <app-not-found
-  [visible]="!foods || !foods.length"
+  [visible]="!events || !events.length"
   resetLinkText="Reset Search"
 ></app-not-found>
 <div class="evenimentele-noastre">
   <h1>EVENIMENTELE NOASTRE</h1>
 </div>
 <ul>
-  <li *ngFor="let food of foods">
+  <li *ngFor="let event of events">
     <!-- <button
       *ngIf="userService.currentUser.isAdmin"
-      (click)="deleteItem(food.id)"
+      (click)="deleteItem(event.id)"
     >
       Delete item
     </button> -->
 
-    <a routerLink="/food/{{ food.id }}"
-      ><img [src]="food.imageUrl" [alt]="food.name"
+    <a routerLink="/event/{{ event.id }}"
+      ><img [src]="event.imageUrl" [alt]="event.name"
     /></a>
 
     <div class="details">
       <div class="header">
-        <h1 class="name">{{ food.name }}</h1>
+        <h1 class="name">{{ event.name }}</h1>
       </div>
 
       <div class="item-details">
@@ -32,7 +30,7 @@
           width="31px"
           height="31px"
         />
-        <p>Locatie: {{ food.locatie }}</p>
+        <p>Locatie: {{ event.locatie }}</p>
       </div>
       <div class="item-details">
         <img
@@ -41,7 +39,7 @@
           width="31px"
           height="31px"
         />
-        <p>Data: {{ food.data }}</p>
+        <p>Data: {{ event.data }}</p>
       </div>
 
       <div class="item-details">
@@ -51,7 +49,7 @@
           width="31px"
           height="31px"
         />
-        <p>Ora: {{ food.ora }}</p>
+        <p>Ora: {{ event.ora }}</p>
       </div>
       <div class="item-details">
         <img
@@ -60,7 +58,7 @@
           width="31px"
           height="31px"
         />
-        <p>Numar de locuri: {{ food.nrLocuri }} persoane</p>
+        <p>Numar de locuri: {{ event.nrLocuri }} persoane</p>
       </div>
 
       <div class="item-details">
@@ -70,9 +68,9 @@
           width="31px"
           height="31px"
         />
-        <p>Pret/persoana: {{ food.price | currency }}</p>
+        <p>Pret/persoana: {{ event.price | currency }}</p>
       </div>
-      <a routerLink="/food/{{ food.id }}">
+      <a routerLink="/event/{{ event.id }}">
         <button>AFLA DETALII</button>
       </a>
     </div>

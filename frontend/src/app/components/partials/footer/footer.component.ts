@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RestaurantService } from '../../../services/restaurant.service';
+import { SupService } from '../../../services/sup.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
@@ -14,13 +14,13 @@ export class FooterComponent {
   currentYear: number = new Date().getFullYear();
 
   constructor(
-    private restaurantService: RestaurantService,
+    private supService: SupService,
     private toastrService: ToastrService,
     private router: Router
   ) {}
 
   addEmailNewsletter(email: string) {
-    this.restaurantService.addEmailNewsletter({ email }).subscribe(() => {
+    this.supService.addEmailNewsletter({ email }).subscribe(() => {
       this.toastrService.success('Review SENT!');
       this.router.navigateByUrl('/');
     });

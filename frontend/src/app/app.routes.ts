@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { FoodDetailsComponent } from './components/pages/food-details/food-details.component';
 import { CartComponent } from './components/pages/cart/cart.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
@@ -14,12 +13,11 @@ import { LocationsComponent } from './components/pages/locations/locations.compo
 import { DespreNoiComponent } from './components/pages/despre-noi/despre-noi.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { EventsComponent } from './components/pages/events-page/events.component';
+import { EventDetailsComponent } from './components/pages/event-details/event-details.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  // { path: 'search/:searchTerm', component: HomeComponent },
-  // { path: 'tag/:tag', component: HomeComponent },
-  { path: 'food/:id', component: FoodDetailsComponent },
+  { path: 'event/:id', component: EventDetailsComponent },
   { path: 'cart-page', component: CartComponent },
   { path: 'events', component: EventsComponent },
   { path: 'contact-us', component: ContactUsPageComponent },

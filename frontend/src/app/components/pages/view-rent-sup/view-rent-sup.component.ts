@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IRentSup } from '../../../shared/interfaces/IRentSup';
-import { RestaurantService } from '../../../services/restaurant.service';
+import { SupService } from '../../../services/sup.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,10 +12,10 @@ import { CommonModule } from '@angular/common';
 })
 export class ViewRentSupComponent {
   rentSups: IRentSup[] = [];
-  constructor(private restaurantService: RestaurantService) {}
+  constructor(private supService: SupService) {}
 
   ngOnInit() {
-    this.restaurantService.getRentSup().subscribe((serverRentSups) => {
+    this.supService.getRentSup().subscribe((serverRentSups) => {
       this.rentSups = serverRentSups;
     });
   }

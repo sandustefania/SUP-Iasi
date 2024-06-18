@@ -5,7 +5,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { TitleComponent } from '../../partials/title/title.component';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../../services/user.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -18,7 +17,6 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    TitleComponent,
     CommonModule,
     RouterModule,
     MatFormFieldModule,

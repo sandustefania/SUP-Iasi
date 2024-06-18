@@ -9,7 +9,6 @@ import {
 import { CartService } from '../../../services/cart.service';
 import { UserService } from '../../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { TitleComponent } from '../../partials/title/title.component';
 import { OrderItemsListComponent } from '../../partials/order-items-list/order-items-list.component';
 import { Router } from '@angular/router';
 import { OrderService } from '../../../services/order.service';
@@ -21,7 +20,6 @@ import { PaypalButtonComponent } from '../../partials/paypal-button/paypal-butto
   selector: 'app-checkout-page',
   standalone: true,
   imports: [
-    TitleComponent,
     ReactiveFormsModule,
     OrderItemsListComponent,
     MatInputModule,

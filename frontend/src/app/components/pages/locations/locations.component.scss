@@ -1,12 +1,27 @@
+h1 {
+    text-align: center;
+    padding-top: 30px;
+}
+
 .main-container {
     display: flex;
     padding-bottom: 150px;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
 }
 
 .weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
-    background-color: #87CEEB;
+    background-color: var(--light-blue);
+    color: white;
     border-radius: 5px;
     width: 500px;
-    height: 400px
+    height: 450px
 }
+
+.google-map {}

@@ -1,4 +1,3 @@
-<app-title title="COSUL TAU" margin="1.5rem 0 0 2.5rem"></app-title>
 <app-not-found
   [visible]="!cart || !cart.items.length"
   notFoundMessage="Cart Page is empty"
@@ -9,11 +8,11 @@
   <ul>
     <li *ngFor="let cartItem of cart.items">
       <div>
-        <img [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name" />
+        <img [src]="cartItem.event.imageUrl" [alt]="cartItem.event.name" />
       </div>
       <div>
-        <a routerLink="/food/{{ cartItem.food.id }}">
-          {{ cartItem.food.name }}</a
+        <a routerLink="/event/{{ cartItem.event.id }}">
+          {{ cartItem.event.name }}</a
         >
       </div>
 
@@ -42,7 +41,7 @@
   </ul>
   <div class="checkout">
     <div>
-      <div class="foods-count">{{ cart.totalCount }}</div>
+      <div class="events-count">{{ cart.totalCount }}</div>
       <div class="total-price">{{ cart.totalPrice | currency }}</div>
     </div>
     <a routerLink="/checkout">FINALIZEAZA COMANDA</a>

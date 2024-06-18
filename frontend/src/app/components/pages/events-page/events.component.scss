@@ -1,8 +1,14 @@
 .evenimentele-noastre {
-    background-image: url("/assets/images/photos/lake.svg");
+    background-image: url("/assets/images/photos/lake.png");
     height: 600px;
     background-repeat: no-repeat;
     background-size: cover;
+
+    h1 {
+        text-align: center;
+        padding-top: 30px;
+        color: white;
+    }
 }
 
 ul {

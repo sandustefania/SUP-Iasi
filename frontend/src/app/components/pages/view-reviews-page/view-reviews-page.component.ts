@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IReview } from '../../../shared/interfaces/IReview';
-import { RestaurantService } from '../../../services/restaurant.service';
+import { SupService } from '../../../services/sup.service';
 import { CommonModule } from '@angular/common';
 import { StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
 import { NgImageSliderModule } from 'ng-image-slider';
@@ -15,10 +15,10 @@ import { NgImageSliderModule } from 'ng-image-slider';
 })
 export class ViewReviewsPageComponent {
   reviews: IReview[] = [];
-  constructor(private restaurantService: RestaurantService) {}
+  constructor(private supService: SupService) {}
 
   ngOnInit() {
-    this.restaurantService.getReviews().subscribe((serverReviews) => {
+    this.supService.getReviews().subscribe((serverReviews) => {
       this.reviews = serverReviews;
     });
   }

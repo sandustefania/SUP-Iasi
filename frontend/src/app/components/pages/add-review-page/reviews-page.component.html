@@ -9,8 +9,6 @@
 
   <div class="main-container">
     <form [formGroup]="reviewForm" (ngSubmit)="submit()">
-      <app-title title="Leave us a review!"></app-title>
-
       <mat-form-field>
         <mat-label>Name</mat-label>
         <input matInput type="text" formControlName="name" />

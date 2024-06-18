@@ -1,16 +1,16 @@
 import { model, Schema, Types } from "mongoose";
-import { Food } from "./food.model";
-import { FoodSchema } from "./food.model";
+import { Event } from "./event.model";
+import { EventSchema } from "./event.model";
 import { OrderStatusEnum } from "../constants/order_status";
 
 export interface OrderItem {
-  food: Food;
+  event: Event;
   price: number;
   quantity: number;
 }
 
 export const OrderItemSchema = new Schema<OrderItem>({
-  food: { type: FoodSchema, required: true },
+  event: { type: EventSchema, required: true },
   price: { type: Number, required: true },
   quantity: { type: Number, required: true },
 });

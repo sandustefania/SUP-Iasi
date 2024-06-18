@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { RestaurantService } from '../../../services/restaurant.service';
+import { SupService } from '../../../services/sup.service';
 
 @Component({
   selector: 'app-locations',
@@ -12,7 +12,8 @@ import { RestaurantService } from '../../../services/restaurant.service';
   styleUrl: './locations.component.scss',
 })
 export class LocationsComponent {
-  constructor(private restaurantService: RestaurantService) {}
+  weatherData: any;
+  constructor(private supService: SupService) {}
   display: google.maps.LatLngLiteral = {
     lat: 47.1682853512441,
     lng: 27.615145896301517,
@@ -23,17 +24,8 @@ export class LocationsComponent {
   };
   zoom = 15;
 
-  moveMap(event: google.maps.MapMouseEvent) {
-    if (event.latLng != null) this.center = event.latLng.toJSON();
-  }
-
-  move(event: google.maps.MapMouseEvent) {
-    if (event.latLng != null) this.display = event.latLng.toJSON();
-  }
-  weatherData: any;
-
   getWeather() {
-    this.restaurantService.loadCurrentWeather().subscribe((res) => {
+    this.supService.loadCurrentWeather().subscribe((res) => {
       this.weatherData = res;
       console.log(res);
     });

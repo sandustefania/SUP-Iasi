@@ -7,7 +7,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { TitleComponent } from '../../partials/title/title.component';
 import { UserService } from '../../../services/user.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { PasswordsMatchValidator } from '../../../shared/validators/password_match_validator';
@@ -20,7 +19,6 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-register-page',
   standalone: true,
   imports: [
-    TitleComponent,
     ReactiveFormsModule,
     CommonModule,
     RouterModule,

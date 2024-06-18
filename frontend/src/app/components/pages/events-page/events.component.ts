@@ -1,6 +1,6 @@
 import { Component, NgModule } from '@angular/core';
-import { FoodService } from '../../../services/food.service';
-import { Food } from '../../../shared/models/Food';
+import { EventService } from '../../../services/event.service';
+import { Event } from '../../../shared/models/Event';
 import { CommonModule } from '@angular/common';
 import {
   ActivatedRoute,
@@ -10,13 +10,11 @@ import {
 } from '@angular/router';
 import { StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
 import { FormsModule } from '@angular/forms';
-import { SearchBarComponent } from '../../partials/search-bar/search-bar.component';
-import { TagsComponent } from '../../partials/tags/tags.component';
-import { NotFoundComponent } from '../../partials/not-found/not-found.component';
 import { Observable } from 'rxjs';
-import { RestaurantService } from '../../../services/restaurant.service';
+import { SupService } from '../../../services/sup.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../services/user.service';
+import { NotFoundComponent } from '../../partials/not-found/not-found.component';
 
 @Component({
   selector: 'app-events',
@@ -26,8 +24,6 @@ import { UserService } from '../../../services/user.service';
     RouterLink,
     StarRatingModule,
     FormsModule,
-    SearchBarComponent,
-    TagsComponent,
     NotFoundComponent,
     RouterModule,
   ],
@@ -36,45 +32,38 @@ import { UserService } from '../../../services/user.service';
   providers: [StarRatingConfigService],
 })
 export class EventsComponent {
-  foods: Food[] = [];
+  events: Event[] = [];
   constructor(
     public userService: UserService,
-    private foodService: FoodService,
-    private restaurantService: RestaurantService,
+    private eventService: EventService,
+    private supService: SupService,
     private toastrService: ToastrService,
     activatedRoute: ActivatedRoute,
     public router: Router
   ) {
-    let foodsObservable: Observable<Food[]>;
+    let eventsObservable: Observable<Event[]>;
     activatedRoute.params.subscribe((params) => {
-      if (params.searchTerm)
-        foodsObservable = this.foodService.getAllFoodsBySearchTerm(
-          params.searchTerm
-        );
-      //tags
-      else if (params.tag)
-        foodsObservable = this.foodService.getAllFoodsByTag(params.tag);
-      else foodsObservable = foodService.getAll();
+      eventsObservable = eventService.getAll();
 
-      foodsObservable.subscribe((serverFoods) => {
-        this.foods = serverFoods;
+      eventsObservable.subscribe((serverEvents) => {
+        this.events = serverEvents;
       });
     });
   }
 
   ngOnInit() {}
 
-  deleteItem(foodId: any) {
-    this.restaurantService.deleteFoodItem(foodId).subscribe({
-      next: () => {
-        this.toastrService.success('Item deleted');
-        this.foodService.getAll().subscribe((serverFoods) => {
-          this.foods = serverFoods;
-        });
-      },
-      error: (error) => {
-        this.toastrService.error(error.error, 'Cart');
-      },
-    });
-  }
+  // deleteItem(eventId: any) {
+  //   this.supService.deleteEventItem(eventId).subscribe({
+  //     next: () => {
+  //       this.toastrService.success('Item deleted');
+  //       this.eventService.getAll().subscribe((serverEvents) => {
+  //         this.events = serverEvents;
+  //       });
+  //     },
+  //     error: (error) => {
+  //       this.toastrService.error(error.error, 'Cart');
+  //     },
+  //   });
+  // }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cart } from '../shared/models/Cart';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Food } from '../shared/models/Food';
+import { Event } from '../shared/models/Event';
 import { CartItem } from '../shared/models/CartItem';
 
 @Injectable({
@@ -12,24 +12,26 @@ export class CartService {
   private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
   constructor() {}
 
-  addToCart(food: Food): void {
-    let cartItem = this.cart.items.find((item) => item.food.id === food.id);
+  addToCart(event: Event): void {
+    let cartItem = this.cart.items.find((item) => item.event.id === event.id);
     if (cartItem) return;
-    this.cart.items.push(new CartItem(food));
+    this.cart.items.push(new CartItem(event));
     this.setCartToLocalStorage();
   }
 
-  removeFromCart(foodId: string): void {
-    this.cart.items = this.cart.items.filter((item) => item.food.id != foodId);
+  removeFromCart(eventId: string): void {
+    this.cart.items = this.cart.items.filter(
+      (item) => item.event.id != eventId
+    );
     this.setCartToLocalStorage();
   }
 
-  changeQuantity(foodId: string, quantity: number) {
-    let cartItem = this.cart.items.find((item) => item.food.id === foodId);
+  changeQuantity(eventId: string, quantity: number) {
+    let cartItem = this.cart.items.find((item) => item.event.id === eventId);
     if (!cartItem) return;
 
     cartItem.quantity = quantity;
-    cartItem.price = quantity * cartItem.food.price;
+    cartItem.price = quantity * cartItem.event.price;
     this.setCartToLocalStorage();
   }
 
