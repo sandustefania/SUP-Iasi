@@ -3,49 +3,43 @@
     flex-direction: column;
     align-items: center;
     background-color: #fafafa;
-    margin-bottom: 5rem;
 
 
-    form {
+    .rating-container {
         display: flex;
         flex-direction: column;
+        background-color: white !important;
 
-        padding: 3rem 0 0 8rem;
-        flex: 0 1 40%;
+        margin-top: 3rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: var(--boxShadow);
 
-        * {
-            width: 100%;
+        div {
+            display: flex;
+            color: orange;
+            font-weight: bold;
+        }
+
+        em {
+            text-align: center;
+            font-size: 0.8rem;
         }
 
     }
 
-    .view-reviews-container {
-        flex: 0 1 60%;
-
-    }
-}
-
-.rating-container {
-    display: flex;
-    flex-direction: column;
-    background-color: white !important;
-
-    margin-top: 3rem;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    box-shadow: var(--boxShadow);
-
-    div {
+    form {
         display: flex;
-        color: orange;
-        font-weight: bold;
+        flex-direction: column;
+        align-items: center;
+        padding: 3rem 0 0 8rem;
+
+        * {
+            width: 80%;
+
+        }
+
     }
 
-    em {
-        text-align: center;
-        font-size: 0.8rem;
-    }
 
 }
-
-.main-container {}
