@@ -15,6 +15,7 @@ import { SupService } from '../../../services/sup.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from '../../../shared/models/User';
 import { formatDate } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rent-sup',
@@ -35,6 +36,7 @@ export class RentSupComponent {
   currentUser!: User;
   minDate: Date;
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private supService: SupService,
     private toastrService: ToastrService,
@@ -49,6 +51,9 @@ export class RentSupComponent {
       numberSups: ['1', [Validators.required]],
       selectedDate: [this.minDate, [Validators.required]],
     });
+    this.supService.getSupsAvailable(this.minDate).subscribe((serverNrSup) => {
+      this.numberSupsAvailable = serverNrSup.availableSups;
+    });
   }
   get fc() {
     return this.rentSupsForm.controls;
@@ -58,28 +63,33 @@ export class RentSupComponent {
 
   select(event: any) {
     const selectedDate = event;
+    this.supService.getSupsAvailable(event).subscribe((serverNrSup) => {
+      console.log(serverNrSup);
+      this.numberSupsAvailable = serverNrSup.availableSups;
+    });
+
     this.rentSupsForm.controls['selectedDate'].setValue(selectedDate);
   }
 
   submit() {
     let { name, email, phone } = this.userService.currentUser;
-
     const formValue = this.rentSupsForm.value;
-    formValue.selectedDate = this.formatDate(formValue.selectedDate);
-    // const dateValue = formValue.selectedDate;
+    const shortDate = this.formatDate(formValue.selectedDate);
 
     this.supService
       .addRentSups({
         numberSups: this.fc.numberSups.value,
         selectedDate: this.fc.selectedDate.value,
-        // selectedDate: dateValue,
         userName: name,
         userEmail: email,
         userPhone: phone,
       })
       .subscribe({
         next: () => {
-          this.toastrService.success('SUP RENTED!');
+          this.toastrService.success(
+            `Felicitari! Ati rezervat ${this.fc.numberSups.value} SUP pe data de ${shortDate} !`
+          );
+          this.router.navigateByUrl('/');
         },
         error: (error) => {
           this.toastrService.error(error.error);
@@ -93,11 +103,5 @@ export class RentSupComponent {
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const day = ('0' + date.getDate()).slice(-2);
     return `${year}-${month}-${day}`;
-  }
-
-  checkSupsAvailable(date: any) {
-    this.supService.getSupsAvailable(date).subscribe((serverNrSup) => {
-      this.numberSupsAvailable = serverNrSup;
-    });
   }
 }

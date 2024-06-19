@@ -71,6 +71,6 @@ export class SupService {
   }
 
   getSupsAvailable(date: any): Observable<any> {
-    return this.http.get<any>(GET_SUPS_AVAILABLE_URL + date);
+    return this.http.get<any>(`${GET_SUPS_AVAILABLE_URL}/${date}`);
   }
 }

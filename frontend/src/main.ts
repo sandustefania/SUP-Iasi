@@ -16,7 +16,7 @@ bootstrapApplication(AppComponent, {
     provideAnimations(),
     importProvidersFrom(
       ToastrModule.forRoot({
-        timeOut: 3000,
+        timeOut: 8000,
         positionClass: 'toast-bottom-right',
         newestOnTop: false,
       })

@@ -1,32 +1,38 @@
 <div class="main-container">
-  <h1>RENT A SUP!</h1>
-  <h2>
-    Sups fleet Available : {{ numberSupsAvailable }}
-    <button (click)="checkSupsAvailable(rentSupsForm.value.selectedDate)">
-      Check
-    </button>
-  </h2>
-
-  <h2>How many SUPs do you want?</h2>
   <form [formGroup]="rentSupsForm" (ngSubmit)="submit()">
-    <!------------ NUMBER OF SUPS -->
-    <mat-form-field>
-      <mat-label>Number of sups</mat-label>
-      <mat-select formControlName="numberSups">
-        <mat-option value="1">1 Sup</mat-option>
-        <mat-option value="2">2 Sups</mat-option>
-        <mat-option value="3">3 Sups</mat-option>
-        <mat-option value="4">4 Sups</mat-option>
-        <mat-option value="5">5 Sups</mat-option>
-        <mat-option value="6">6 Sups</mat-option>
-        <mat-option value="7">7 Sups</mat-option>
-        <mat-option value="8">8 Sups</mat-option>
-        <mat-option value="9">9 Sups</mat-option>
-        <mat-option value="10">10 Sups</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="left-side">
+      <h1>RENT A SUP!</h1>
 
-    <p>You selected:</p>
+      <h2>How many SUPs do you want?&nbsp;</h2>
+      <!------------ NUMBER OF SUPS -->
+      <mat-form-field>
+        <mat-label>Number of sups</mat-label>
+        <mat-select formControlName="numberSups">
+          <mat-option value="1">1 Sup</mat-option>
+          <mat-option value="2">2 Sups</mat-option>
+          <mat-option value="3">3 Sups</mat-option>
+          <mat-option value="4">4 Sups</mat-option>
+          <mat-option value="5">5 Sups</mat-option>
+          <mat-option value="6">6 Sups</mat-option>
+          <mat-option value="7">7 Sups</mat-option>
+          <mat-option value="8">8 Sups</mat-option>
+          <mat-option value="9">9 Sups</mat-option>
+          <mat-option value="10">10 Sups</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <h2>
+        SUPs available for
+        <span style="color: var(--orange)"
+          >{{ rentSupsForm.value.selectedDate | date }} :
+          {{ numberSupsAvailable }}</span
+        >
+        <br />
+      </h2>
+      <button mat-raised-button class="btn-submit" type="submit">
+        Reverva acum!
+      </button>
+    </div>
+
     <!---------------- CALENDAR -->
     <mat-card class="demo-inline-calendar-card">
       <mat-calendar
@@ -35,7 +41,7 @@
         (selectedChange)="select($event)"
       ></mat-calendar>
     </mat-card>
-    <p>Selected date: {{ rentSupsForm.value.selectedDate | date }}</p>
-    <button class="btn-submit" type="submit">Submit</button>
+    <br />
   </form>
+  <br />
 </div>

@@ -115,7 +115,6 @@ router.get(
 
 router.post("/addRentSup", async (req, res) => {
   const { numberSups, selectedDate, userName, userEmail, userPhone } = req.body;
-
   const convertNumberSups = parseInt(numberSups);
 
   try {
@@ -165,25 +164,25 @@ router.get(
   })
 );
 
-router.get("/getSupsAvailable", async (req, res) => {
-  const { numberSups, selectedDate } = req.body;
-  const convertNumberSups = parseInt(numberSups);
-  const existingRecord = await RentSupModel.find({
-    selectedDate: selectedDate,
-  });
-  if (existingRecord) {
+router.get("/getSupsAvailable/:date", async (req, res) => {
+  const { date } = req.params;
+  console.log(date);
+
+  try {
+    const selectedDate = new Date(date);
+    const existingRecord = await RentSupModel.find({
+      selectedDate: selectedDate,
+    });
+
     const totalSups = existingRecord.reduce(
       (total, order) => total + order.numberSups,
       0
     );
-    if (totalSups >= 10) {
-      return res.status(400).send("No Sups Available");
-    } else {
-      console.log(10 - totalSups);
-      return res.send(10 - totalSups);
-    }
+    const availableSups = 10 - totalSups;
+    res.status(200).json({ availableSups });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", error });
   }
-  res.send();
 });
 
 export default router;
