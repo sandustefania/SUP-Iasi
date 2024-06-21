@@ -29,7 +29,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AddEventItemComponent {
   addItemForm!: FormGroup;
-  selectedFile = '';
+  imagePreview: string | ArrayBuffer | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -41,35 +41,46 @@ export class AddEventItemComponent {
   ngOnInit() {
     this.addItemForm = this.fb.group({
       name: ['', [Validators.required]],
-      price: ['', [Validators.required]],
-      imageUrl: ['', [Validators.required]],
+      locatie: ['', [Validators.required]],
+      data: ['', [Validators.required]],
+      ora: ['', [Validators.required]],
+      pret: ['', [Validators.required]],
+      nrLocuri: ['', [Validators.required]],
+      image: [null, [Validators.required]],
     });
   }
 
   get fc() {
     return this.addItemForm.controls;
   }
+
+  uploadImage(event: any) {
+    const file = (event.target as HTMLInputElement).files![0];
+    this.addItemForm.patchValue({ image: file });
+    this.addItemForm.get('image')!.updateValueAndValidity();
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
   submit() {
-    if (this.addItemForm.invalid) {
-      return;
-    }
     const formData = new FormData();
     formData.append('name', this.addItemForm.get('name')?.value);
-    formData.append('price', this.addItemForm.get('price')?.value);
-    formData.append('imageUrl', this.selectedFile);
+    formData.append('locatie', this.addItemForm.get('locatie')?.value);
+    formData.append('data', this.addItemForm.get('data')?.value);
+    formData.append('ora', this.addItemForm.get('ora')?.value);
+    formData.append('pret', this.addItemForm.get('pret')?.value);
+    formData.append('nrLocuri', this.addItemForm.get('nrLocuri')?.value);
+    formData.append('image', this.addItemForm.get('image')?.value);
 
     this.supService.addEventItem(formData).subscribe({
       next: () => this.router.navigateByUrl('/'),
       error: (error) => {
         this.toastrService.error(error.error, 'Error');
       },
-    });
-  }
-
-  uploadImage(event: any) {
-    this.selectedFile = event.target.files[0];
-    this.addItemForm.patchValue({
-      imageUrl: this.selectedFile,
     });
   }
 }

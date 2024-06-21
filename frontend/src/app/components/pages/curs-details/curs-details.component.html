@@ -1,18 +1,18 @@
 <app-not-found
-  [visible]="!eventDetails"
-  notFoundMessage="Event Not Found!"
+  [visible]="!cursDetails"
+  notFoundMessage="Curs Not Found!"
   resetLinkText="Back to Homepage"
 ></app-not-found>
 <h1>EVENIMENT</h1>
-<div *ngIf="eventDetails" class="container">
+<div *ngIf="cursDetails" class="container">
   <img
-    [src]="eventDetails.imageUrl"
-    [alt]="eventDetails.name"
+    [src]="cursDetails.imageUrl"
+    [alt]="cursDetails.name"
     class="item-image"
   />
   <div class="details">
     <div class="header">
-      <span class="name">{{ eventDetails.name }}</span>
+      <span class="name">{{ cursDetails.name }}</span>
     </div>
 
     <div class="item-details">
@@ -22,7 +22,7 @@
         width="31px"
         height="31px"
       />
-      <p>Locatie: {{ eventDetails.locatie }}</p>
+      <p>Locatie: {{ cursDetails.locatie }}</p>
     </div>
     <div class="item-details">
       <img
@@ -31,7 +31,7 @@
         width="31px"
         height="31px"
       />
-      <p>Data: {{ eventDetails.data }}</p>
+      <p>Data: {{ cursDetails.durata }}</p>
     </div>
 
     <div class="item-details">
@@ -41,16 +41,16 @@
         width="31px"
         height="31px"
       />
-      <p>Ora: {{ eventDetails.ora }}</p>
+      <p>Ora: {{ cursDetails.ora }}</p>
     </div>
     <div class="item-details">
       <img
-        src="assets/images/svg/nr-locuri.png"
+        src="assets/images/svg/user-check.png"
         alt="clock"
         width="31px"
         height="31px"
       />
-      <p>Numar de locuri: {{ eventDetails.nrLocuri }} persoane</p>
+      <p>Varsta: {{ cursDetails.varsta }}</p>
     </div>
 
     <div class="item-details">
@@ -60,11 +60,11 @@
         width="31px"
         height="31px"
       />
-      <p>Pret/persoana: {{ eventDetails.price | currency }}</p>
+      <p>Pret/persoana: {{ cursDetails.price | currency }}</p>
     </div>
 
     <!-- <div class="tags">
-      <a *ngFor="let tag of eventDetails.tags" routerLink="/tag/{{ tag }}"
+      <a *ngFor="let tag of cursDetails.tags" routerLink="/tag/{{ tag }}"
         >{{ tag }}
       </a>
     </div> -->
@@ -76,11 +76,11 @@
 
 <div class="detalii">
   <div class="detalii-item">
-    <h1>Experienta?</h1>
+    <h1>Pentru cine?</h1>
     <p>
-      Acest eveniment este dedicat tuturor persoanelor, indiferent de
-      experienta. Inaintea inceperii evenimentului, vom face si un training
-      dedicat persoanelor care fac asta pentru prima data.
+      Acest curs este dedicat copiilor care au parcurs cursul de initiere si isi
+      doresc sa continuie procesul de invatare pe apa. Varsta recomandata este
+      de 8-13 ani, insa se pot face si exceptii.
     </p>
   </div>
   <div class="detalii-item">
@@ -94,7 +94,7 @@
   <div class="detalii-item">
     <h1>De ce?</h1>
     <p>
-      Acest eveniment va ofera posibilitatea de a va dezvolta, invatand tehnici
+      Acest curs ofera copiilor posibilitatea de a se dezvolta, invatand tehnici
       de vaslit, balas si siguranta pe apa. Totodata, mediul este unul
       prietenos, in care fiecare este incurajat sa se exprime liber.
     </p>

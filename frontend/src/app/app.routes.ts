@@ -14,6 +14,8 @@ import { DespreNoiComponent } from './components/pages/despre-noi/despre-noi.com
 import { HomeComponent } from './components/pages/home/home.component';
 import { EventsComponent } from './components/pages/events-page/events.component';
 import { EventDetailsComponent } from './components/pages/event-details/event-details.component';
+import { CursuriComponent } from './components/pages/cursuri/cursuri.component';
+import { CursDetailsComponent } from './components/pages/curs-details/curs-details.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,6 +29,8 @@ export const routes: Routes = [
   { path: 'rent-sup', component: RentSupComponent },
   { path: 'locations', component: LocationsComponent },
   { path: 'despre-noi', component: DespreNoiComponent },
+  { path: 'cursuri', component: CursuriComponent },
+  { path: 'curs/:id', component: CursDetailsComponent },
 
   {
     path: 'admin-page',

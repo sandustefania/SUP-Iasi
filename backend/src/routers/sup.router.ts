@@ -9,32 +9,29 @@ import axios from "axios";
 import { RentSupModel } from "../models/rentSups.model";
 import { HTTP_BAD_REQUEST } from "../constants/http_status";
 import { EventModel } from "../models/event.model";
-
+const upload = require("../configs/multerConfig");
 const router = Router();
 
-const storage = multer.diskStorage({
-  destination: "./uploads/",
-  filename: function (req, file, cb) {
-    cb(
-      null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
-    );
-  },
-});
-
-const upload = multer({ storage });
-
 // Route handler for adding message with image upload
-router.post("/addEventItem", upload.single("imageUrl"), async (req, res) => {
-  const { name, price } = req.body;
-  const imageUrl = req.file ? req.file.path : "";
-
+router.post("/addEventItem", upload.single("image"), async (req, res) => {
   try {
-    const addEventItem = new EventModel({ name, price, imageUrl });
-    await addEventItem.save();
-    res.send(addEventItem);
-  } catch (err) {
-    res.status(500).send(err);
+    const imageUrl = req.file
+      ? `/uploads/${req.file.filename}`
+      : "assets/images/photos/default-image.png";
+
+    const item = new EventModel({
+      name: req.body.name,
+      locatie: req.body.locatie,
+      data: req.body.data,
+      ora: req.body.ora,
+      price: req.body.pret,
+      nrLocuri: req.body.nrLocuri,
+      imageUrl: imageUrl,
+    });
+    await item.save();
+    res.status(201).json({ message: "Item added successfully", item });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", error });
   }
 });
 

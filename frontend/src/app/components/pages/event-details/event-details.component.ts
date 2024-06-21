@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { Event } from '../../../shared/models/Event';
-import { ActivatedRoute, RouterLink, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  RouterLink,
+  Router,
+  NavigationEnd,
+} from '@angular/router';
 import { StarRatingConfigService, StarRatingModule } from 'angular-star-rating';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../../services/cart.service';
@@ -29,6 +34,14 @@ export class EventDetailsComponent {
         eventService.getEventById(params.id).subscribe((serverEvent) => {
           this.eventDetails = serverEvent;
         });
+    });
+  }
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        window.scrollTo(0, 0);
+      }
     });
   }
 

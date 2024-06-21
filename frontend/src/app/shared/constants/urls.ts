@@ -5,13 +5,16 @@ const BASE_URL = 'http://localhost:5000';
 // const production = process.env.NODE_ENV === 'production';
 // const BASE_URL = production ? '' : 'http://localhost:5000/';
 
+//evenimente
 export const EVENTS_URL = BASE_URL + '/api/events';
 export const EVENTS_TAGS_URL = EVENTS_URL + '/tags';
-//export const EVENTS_TAGS_URL = BASE_URL + '/api/events/tags';
-
 export const EVENTS_BY_SEARCH_URL = EVENTS_URL + '/search/';
 export const EVENTS_BY_TAG_URL = EVENTS_URL + '/tag/';
 export const EVENTS_BY_ID_URL = EVENTS_URL + '/';
+
+//cursuri
+export const CURSURI_URL = BASE_URL + '/api/cursuri';
+export const CURSURI_BY_ID_URL = CURSURI_URL + '/';
 
 //----Login
 export const USER_LOGIN_URL = BASE_URL + '/api/users/login';

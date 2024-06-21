@@ -78,7 +78,7 @@ export class CheckoutPageComponent {
         //https://www.figma.com/file/Egy0UqiI7EJgAz3YnmmS2Z/Untitled?type=design&node-id=0-1&mode=design
       },
       error: (error) => {
-        this.toastrService.error(error.error, 'Cart');
+        // this.toastrService.error(error.error, 'Cart');
       },
     });
   }

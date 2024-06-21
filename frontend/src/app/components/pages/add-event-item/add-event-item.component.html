@@ -11,21 +11,49 @@
     </mat-form-field>
     <br />
     <mat-form-field>
-      <mat-label>Price</mat-label>
-      <input matInput type="number" formControlName="price" />
-      <mat-error>Price is required</mat-error>
+      <mat-label>Locatie</mat-label>
+      <input matInput type="text" formControlName="locatie" />
+      <mat-error>Locatie is required</mat-error>
     </mat-form-field>
     <br />
+    <mat-form-field>
+      <mat-label>Data</mat-label>
+      <input matInput type="text" formControlName="data" />
+      <mat-error>Data is required</mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Ora</mat-label>
+      <input matInput type="text" formControlName="ora" />
+      <mat-error>Ora is required</mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>Pret</mat-label>
+      <input matInput type="number" formControlName="pret" />
+      <mat-error>Pret is required</mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <mat-label>NrLocuri</mat-label>
+      <input matInput type="text" formControlName="nrLocuri" />
+      <mat-error>NrLocuri is required</mat-error>
+    </mat-form-field>
+    <br />
+
     <div>
-      <label for="imageUrl">Choose Image:</label>
+      <label for="image">Choose Image:</label>
       <input
         type="file"
-        id="imageUrl"
-        name="imageUrl"
+        id="image"
+        name="image"
         (change)="uploadImage($event)"
         accept="image/*"
         required
       />
+    </div>
+    <div *ngIf="imagePreview">
+      <img [src]="imagePreview" alt="Image Preview" width="200" />
     </div>
     <button type="submit">Upload</button>
   </form>

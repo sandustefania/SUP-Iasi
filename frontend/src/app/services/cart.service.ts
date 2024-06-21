@@ -3,6 +3,7 @@ import { Cart } from '../shared/models/Cart';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Event } from '../shared/models/Event';
 import { CartItem } from '../shared/models/CartItem';
+import { Curs } from '../shared/models/Curs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class CartService {
   private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
   constructor() {}
 
-  addToCart(event: Event): void {
+  addToCart(event: Event | Curs): void {
     let cartItem = this.cart.items.find((item) => item.event.id === event.id);
     if (cartItem) return;
     this.cart.items.push(new CartItem(event));

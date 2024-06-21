@@ -11,11 +11,13 @@ import orderRouter from "./routers/order.router";
 import supRouter from "./routers/sup.router";
 import path from "path";
 import eventRouter from "./routers/event.router";
+import cursRouter from "./routers/curs.router";
 const multer = require("multer");
 
 dbConnect();
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //cors for development time (localhost:4200--->localhost:5000)
 app.use(
@@ -29,9 +31,12 @@ app.use(
 );
 
 app.use("/api/events", eventRouter);
+app.use("/api/cursuri", cursRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/sup", supRouter);
+
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(express.static("public/browser"));
 app.get("*", (req, res) => {

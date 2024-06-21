@@ -1,0 +1,78 @@
+<app-not-found
+  [visible]="!cursuri || !cursuri.length"
+  resetLinkText="Reset Search"
+></app-not-found>
+<div class="cursurile-noastre">
+  <h1>CURSURILE NOASTRE</h1>
+</div>
+<ul>
+  <li *ngFor="let curs of cursuri">
+    <!-- <button
+      *ngIf="userService.currentUser.isAdmin"
+      (click)="deleteItem(curs.id)"
+    >
+      Delete item
+    </button> -->
+
+    <a routerLink="/curs/{{ curs.id }}"
+      ><img [src]="curs.imageUrl" [alt]="curs.name"
+    /></a>
+
+    <div class="details">
+      <div class="header">
+        <h1 class="name">{{ curs.name }}</h1>
+      </div>
+
+      <div class="item-details">
+        <img
+          src="assets/images/svg/map-pin.png"
+          alt="clock"
+          width="31px"
+          height="31px"
+        />
+        <p>Locatie: {{ curs.locatie }}</p>
+      </div>
+      <div class="item-details">
+        <img
+          src="assets/images/svg/date.png"
+          alt="clock"
+          width="31px"
+          height="31px"
+        />
+        <p>Durata: {{ curs.durata }}</p>
+      </div>
+
+      <div class="item-details">
+        <img
+          src="assets/images/svg/clock.png"
+          alt="clock"
+          width="31px"
+          height="31px"
+        />
+        <p>Ora: {{ curs.ora }}</p>
+      </div>
+      <div class="item-details">
+        <img
+          src="assets/images/svg/user-check.png"
+          alt="clock"
+          width="31px"
+          height="31px"
+        />
+        <p>Varsta: {{ curs.varsta }} ani</p>
+      </div>
+
+      <div class="item-details">
+        <img
+          src="assets/images/svg/price.png"
+          alt="clock"
+          width="31px"
+          height="31px"
+        />
+        <p>Pret/persoana: {{ curs.price | currency }}</p>
+      </div>
+      <a routerLink="/curs/{{ curs.id }}">
+        <button>AFLA DETALII</button>
+      </a>
+    </div>
+  </li>
+</ul>

@@ -1,25 +1,25 @@
 import { Schema, model } from "mongoose";
 
-export interface Event {
+export interface Curs {
   id: string;
   name: string;
   locatie: string;
-  data: string;
+  durata: string;
   ora: string;
   price: number;
+  varsta: string;
   imageUrl: string;
-  nrLocuri: string;
 }
 
-export const EventSchema = new Schema<Event>(
+export const CursSchema = new Schema<Curs>(
   {
     name: { type: String, required: true },
     locatie: { type: String, required: true },
-    data: { type: String, required: true },
+    durata: { type: String, required: true },
     ora: { type: String, required: true },
     price: { type: Number, required: true },
+    varsta: { type: String, required: true },
     imageUrl: { type: String, required: true },
-    nrLocuri: { type: String },
   },
   {
     toJSON: {
@@ -32,4 +32,4 @@ export const EventSchema = new Schema<Event>(
   }
 );
 
-export const EventModel = model<Event>("event", EventSchema);
+export const CursModel = model<Curs>("curs", CursSchema);
