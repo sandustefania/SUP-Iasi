@@ -13,15 +13,16 @@ router.post(
     const { email, password } = req.body;
     const user = await UserModel.findOne({ email });
     //admin
-    if (user?.email === "dragos@gmail.com") {
+    if (user?.email === "sandu.stefaniaalina@yahoo.com") {
       res.send(generateTokenResponse(user));
       return;
     }
     //trebuie comparata parola introdusa cu parola cryptata din bd
-    if (user && (await bcrypt.compare(password, user.password))) {
+    if (user && (await bcrypt.compare(password, user.password))) 
+       {
       res.send(generateTokenResponse(user));
     } else {
-      res.status(HTTP_BAD_REQUEST).send("User name or password is not valid!");
+      res.status(HTTP_BAD_REQUEST).send("Email sau parola invalide!");
     }
   })
 );
@@ -33,7 +34,7 @@ router.post(
     const user = await UserModel.findOne({ email }); //verificam daca exista deja un user cu acest email
     if (user) {
       // res.status(400)
-      res.status(HTTP_BAD_REQUEST).send("Users already exists, please login!");
+      res.status(HTTP_BAD_REQUEST).send("Acest e-mail deja exista, va rugam autentificati-va!");
       return;
     }
 
@@ -53,6 +54,7 @@ router.post(
     res.send(generateTokenResponse(dbUser));
   })
 );
+
 
 //JWT token
 const generateTokenResponse = (user: any) => {

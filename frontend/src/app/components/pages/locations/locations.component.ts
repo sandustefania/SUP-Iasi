@@ -14,16 +14,17 @@ import { SupService } from '../../../services/sup.service';
 export class LocationsComponent {
   weatherData: any;
   constructor(private supService: SupService) {}
-  display: google.maps.LatLngLiteral = {
-    lat: 47.1682853512441,
-    lng: 27.615145896301517,
-  };
+
   center: google.maps.LatLngLiteral = {
     lat: 47.1682853512441,
     lng: 27.615145896301517,
   };
   zoom = 15;
 
+  ngOnInit() {
+    this.getWeather();
+  }
+  
   getWeather() {
     this.supService.loadCurrentWeather().subscribe((res) => {
       this.weatherData = res;
@@ -34,7 +35,5 @@ export class LocationsComponent {
     return `http://openweathermap.org/img/wn/${iconCode}.png`;
   }
 
-  ngOnInit() {
-    this.getWeather();
-  }
+ 
 }

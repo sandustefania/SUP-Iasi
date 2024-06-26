@@ -4,6 +4,7 @@
       <p>Name : {{ message.name }}</p>
       <p>Email : {{ message.email }}</p>
       <p>Message : {{ message.message }}</p>
+      <a [href]="'mailto:' + message.email" >Trimite email </a>
     </li>
   </ul>
 </div>

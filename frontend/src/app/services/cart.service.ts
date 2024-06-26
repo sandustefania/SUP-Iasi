@@ -13,6 +13,7 @@ export class CartService {
   private cartSubject: BehaviorSubject<Cart> = new BehaviorSubject(this.cart);
   constructor() {}
 
+  //elementele adaugate in cart se salveaza in local storage
   addToCart(event: Event | Curs): void {
     let cartItem = this.cart.items.find((item) => item.event.id === event.id);
     if (cartItem) return;

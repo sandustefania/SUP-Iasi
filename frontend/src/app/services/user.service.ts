@@ -36,8 +36,8 @@ export class UserService {
     return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(
       tap({
         next: (user) => {
-          this.setUserToLocalStorage(user);
-          this.userSubject.next(user),
+          this.setUserToLocalStorage(user); //salvam user in localstorage 
+          this.userSubject.next(user),  //salvam user in variabila userSubject
             this.toastrService.success(
               `Welcome ${user.name}!`,
               'Login Successful'
@@ -75,6 +75,7 @@ export class UserService {
     window.location.reload();
   }
 
+  //salveaza in localStorage raspunsul din backend, cu user-ul ( inspect->application->localstorage)
   private setUserToLocalStorage(user: User) {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   }
