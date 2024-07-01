@@ -125,7 +125,7 @@ router.post("/addRentSup", async (req, res) => {
       if (totalSups + convertNumberSups > 10) {
         return res
           .status(HTTP_BAD_REQUEST)
-          .send(`Numarul total de SUP-uri ramase este ${10-totalSups}`);
+          .send(`Ne pare rau! Numarul total de SUP-uri ramase este ${10-totalSups}`);
       } else {
         const newSup = new RentSupModel({
           numberSups: convertNumberSups,
