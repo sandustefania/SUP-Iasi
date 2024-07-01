@@ -79,13 +79,12 @@ header {
     .menu {
         position: absolute;
         z-index: 1;
-        background-color: whitesmoke;
+        background-color: white;
         display: none;
+        border-radius: 0 0 20px 20px;
+        cursor: pointer;
 
-        // a {
-        //     width: 100%;
-        //     min-width: 8rem;
-        // }
+        a {}
     }
 
 

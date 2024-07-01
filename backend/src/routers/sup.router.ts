@@ -15,9 +15,10 @@ const router = Router();
 // Route handler for adding message with image upload
 router.post("/addEventItem", upload.single("image"), async (req, res) => {
   try {
-    const imageUrl = req.file
-      ? `/uploads/${req.file.filename}`
-      : "assets/images/photos/default-image.png";
+    // const imageUrl = req.file
+    //   ? `/uploads/${req.file.filename}`
+    //   : "assets/images/photos/default-image.png";
+    const imageUrl = "/assets/images/photos/home2.jpg";
 
     const item = new EventModel({
       name: req.body.name,

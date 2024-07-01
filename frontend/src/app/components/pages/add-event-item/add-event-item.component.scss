@@ -1,3 +1,37 @@
 .main-container {
     height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+
+    h1 {
+        color: var(--orange);
+
+    }
+
+    form {
+
+
+        * {
+            width: 310px;
+        }
+
+    }
+
+
+    button {
+        font-size: 30px;
+        margin: 20px 0px;
+        padding: 5px 50px;
+        color: white;
+        border-radius: 10px;
+        background-color: var(--light-blue);
+
+        &:hover {
+            opacity: 0.9;
+            cursor: pointer;
+        }
+    }
+
 }

@@ -1,9 +1,16 @@
 <div class="container">
+  <h1>MESAJELE PRIMITE:</h1>
   <ul>
     <li *ngFor="let message of messages">
-      <p>Name : {{ message.name }}</p>
-      <p>Email : {{ message.email }}</p>
-      <p>Message : {{ message.message }}</p>
+      <p>
+        Nume : <strong> {{ message.name }}</strong>
+      </p>
+      <p>
+        Email : <strong>{{ message.email }}</strong>
+      </p>
+      <p>
+        Mesaj : <strong>{{ message.message }}</strong>
+      </p>
     </li>
   </ul>
 </div>

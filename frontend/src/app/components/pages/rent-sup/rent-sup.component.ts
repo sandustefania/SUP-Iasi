@@ -89,7 +89,7 @@ export class RentSupComponent {
           this.toastrService.success(
             `Felicitari! Ati rezervat ${this.fc.numberSups.value} SUP pe data de ${shortDate} !`
           );
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/locations');
         },
         error: (error) => {
           this.toastrService.error(error.error);
