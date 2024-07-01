@@ -15,6 +15,8 @@
     box-shadow: -2px 0px 10px 0px #53A7D1;
 
     form {
+        background-color: var(--light-blue);
+        border-radius: 50px;
         width: 52%;
         display: flex;
         flex-direction: column;
@@ -27,7 +29,7 @@
         }
 
         h1 {
-            color: var(--orange)
+            color: var(--dark-blue)
         }
 
         button {
@@ -44,7 +46,6 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-color: var(--light-blue);
         border-radius: 50px;
 
         .rating-container {
