@@ -174,7 +174,6 @@ router.get(
 
 router.get("/getSupsAvailable/:date", async (req, res) => {
   const { date } = req.params;
-  console.log(date);
 
   try {
     const selectedDate = new Date(date);
