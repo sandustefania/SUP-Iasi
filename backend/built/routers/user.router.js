@@ -40,32 +40,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
-var data_1 = require("../data");
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var express_async_handler_1 = __importDefault(require("express-async-handler"));
 var user_model_1 = require("../models/user.model");
 var http_status_1 = require("../constants/http_status");
 var bcryptjs_1 = __importDefault(require("bcryptjs"));
 var router = (0, express_1.Router)();
-router.get("/seed", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var usersCount;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, user_model_1.UserModel.countDocuments()];
-            case 1:
-                usersCount = _a.sent();
-                if (usersCount > 0) {
-                    res.send("Seed is already done");
-                    return [2 /*return*/];
-                }
-                return [4 /*yield*/, user_model_1.UserModel.create(data_1.sample_users)];
-            case 2:
-                _a.sent();
-                res.send("Seed is Done!");
-                return [2 /*return*/];
-        }
-    });
-}); }));
 router.post("/login", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, email, password, user, _b;
     return __generator(this, function (_c) {
@@ -98,24 +78,12 @@ router.post("/login", (0, express_async_handler_1.default)(function (req, res) {
         }
     });
 }); }));
-//vechea varianta
-// router.post("/login", (req, res) => {
-//   const { email, password } = req.body;
-//   const user = sample_users.find(
-//     (user) => user.email === email && user.password === password
-//   );
-//   if (user) {
-//     res.send(generateTokenResponse(user));
-//   } else {
-//     res.status(400).send("User name or password is not valid!");
-//   }
-// });
 router.post("/register", (0, express_async_handler_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, name, email, password, address, user, encryptedPassword, newUser, dbUser;
+    var _a, name, email, phone, password, user, encryptedPassword, newUser, dbUser;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                _a = req.body, name = _a.name, email = _a.email, password = _a.password, address = _a.address;
+                _a = req.body, name = _a.name, email = _a.email, phone = _a.phone, password = _a.password;
                 return [4 /*yield*/, user_model_1.UserModel.findOne({ email: email })];
             case 1:
                 user = _b.sent();
@@ -130,11 +98,11 @@ router.post("/register", (0, express_async_handler_1.default)(function (req, res
                 newUser = {
                     id: "",
                     name: name,
+                    phone: phone,
                     email: email.toLowerCase(),
                     password: encryptedPassword,
-                    address: address,
                     //orice new user e admin
-                    isAdmin: true,
+                    isAdmin: false,
                 };
                 return [4 /*yield*/, user_model_1.UserModel.create(newUser)];
             case 3:
@@ -155,7 +123,7 @@ var generateTokenResponse = function (user) {
         id: user.id,
         email: user.email,
         name: user.name,
-        address: user.address,
+        phone: user.phone,
         isAdmin: user.isAdmin,
         token: token,
     };

@@ -1,9 +1,9 @@
 import { environment } from '../../../environments/environment';
 
-const BASE_URL = 'http://localhost:5000';
+// const BASE_URL = 'http://localhost:5000';
 // const BASE_URL = environment.production ? '' : 'http://localhost:5000';
-// const production = process.env.NODE_ENV === 'production';
-// const BASE_URL = production ? '' : 'http://localhost:5000/';
+const production = process.env.NODE_ENV === 'production';
+const BASE_URL = production ? '' : 'http://localhost:5000/';
 
 //evenimente
 export const EVENTS_URL = BASE_URL + '/api/events';
