@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
-process.env.MONGO_URI; //i have access to .env file
+// process.env.MONGO_URI; //i have access to .env file
 var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
 var user_router_1 = __importDefault(require("./routers/user.router"));
@@ -15,7 +15,6 @@ var sup_router_1 = __importDefault(require("./routers/sup.router"));
 var path_1 = __importDefault(require("path"));
 var event_router_1 = __importDefault(require("./routers/event.router"));
 var curs_router_1 = __importDefault(require("./routers/curs.router"));
-var multer = require("multer");
 (0, database_config_1.dbConnect)();
 var app = (0, express_1.default)();
 app.use(express_1.default.json());
