@@ -92,7 +92,10 @@ export class RentSupComponent {
           this.router.navigateByUrl('/locations');
         },
         error: (error) => {
-          this.toastrService.error(error.error);
+          this.toastrService.error(
+            'Pentru a rezerva, trebuie sa fiti conectat!'
+          );
+          this.router.navigateByUrl('/login');
         },
       });
   }
