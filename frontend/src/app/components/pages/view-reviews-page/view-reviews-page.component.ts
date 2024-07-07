@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IReview } from '../../../shared/interfaces/IReview';
 import { SupService } from '../../../services/sup.service';
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
   providers: [StarRatingConfigService],
 })
 export class ViewReviewsPageComponent {
+  @Input() isAdmin: boolean = true;
   reviews: IReview[] = [];
   constructor(private supService: SupService) {}
 

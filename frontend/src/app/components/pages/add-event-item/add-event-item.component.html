@@ -4,6 +4,7 @@
     (ngSubmit)="submit()"
     enctype="multipart/form-data"
   >
+    <h1>ADAUGA EVENIMENT</h1>
     <mat-form-field>
       <mat-label>Name</mat-label>
       <input matInput type="text" formControlName="name" />
@@ -41,7 +42,7 @@
     </mat-form-field>
     <br />
 
-    <div>
+    <!-- <div>
       <label for="image">Choose Image:</label>
       <input
         type="file"
@@ -51,7 +52,7 @@
         accept="image/*"
         required
       />
-    </div>
+    </div> -->
     <div *ngIf="imagePreview">
       <img [src]="imagePreview" alt="Image Preview" width="200" />
     </div>

@@ -1,8 +1,35 @@
-div ul {
-    display: flex;
-    flex-wrap: wrap;
+.container {
 
-    li {
-        margin: 50px;
+    h1 {
+        text-align: center;
+        padding-top: 50px;
+        color: var(--orange)
+    }
+
+    ul {
+        display: flex;
+        list-style-type: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative;
+
+        margin-top: 50px;
+
+        li {
+            background-color: white;
+            padding: 0 2rem;
+            margin: 1rem;
+            width: 300px;
+            height: 300px;
+            border: 2px solid var(--light-blue);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            position: relative;
+
+        }
     }
 }

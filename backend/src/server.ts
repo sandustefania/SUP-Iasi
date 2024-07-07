@@ -12,7 +12,6 @@ import supRouter from "./routers/sup.router";
 import path from "path";
 import eventRouter from "./routers/event.router";
 import cursRouter from "./routers/curs.router";
-const multer = require("multer");
 
 dbConnect();
 const app = express();

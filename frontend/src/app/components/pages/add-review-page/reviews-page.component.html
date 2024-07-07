@@ -1,16 +1,9 @@
-<div class="container">
-  <div class="rating-container">
-    <div>
-      <star-rating [starType]="'svg'" [rating]="averageRating"></star-rating>
-      <span>{{ averageRating }} out of 5</span>
-    </div>
-    <em>Based on {{ reviewsCount }} reviews</em>
-  </div>
-
-  <div class="main-container">
+<div class="main">
+  <div class="container">
     <form [formGroup]="reviewForm" (ngSubmit)="submit()">
+      <h1>OFERA UN REVIEW</h1>
       <mat-form-field>
-        <mat-label>Name</mat-label>
+        <mat-label>Nume</mat-label>
         <input matInput type="text" formControlName="name" />
         <mat-error>Name is required</mat-error>
       </mat-form-field>
@@ -43,9 +36,20 @@
 
       <button mat-raised-button color="primary" type="submit">Submit</button>
     </form>
-    <br /><br /><br />
+
     <div class="view-reviews-container">
-      <app-view-reviews-page></app-view-reviews-page>
+      <div class="rating-container">
+        <div>
+          <star-rating
+            [starType]="'svg'"
+            [rating]="averageRating"
+          ></star-rating>
+          <span>{{ averageRating }} out of 5</span>
+        </div>
+
+        <em>Based on {{ reviewsCount }} reviews</em>
+      </div>
+      <app-view-reviews-page [isAdmin]="false"></app-view-reviews-page>
     </div>
   </div>
 </div>

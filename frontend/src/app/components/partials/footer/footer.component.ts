@@ -21,7 +21,7 @@ export class FooterComponent {
 
   addEmailNewsletter(email: string) {
     this.supService.addEmailNewsletter({ email }).subscribe(() => {
-      this.toastrService.success('Review SENT!');
+      this.toastrService.success('Email-ul a fost adaugat!');
       this.router.navigateByUrl('/');
     });
   }

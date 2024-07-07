@@ -9,15 +9,26 @@ import axios from "axios";
 import { RentSupModel } from "../models/rentSups.model";
 import { HTTP_BAD_REQUEST } from "../constants/http_status";
 import { EventModel } from "../models/event.model";
-const upload = require("../configs/multerConfig");
 const router = Router();
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname, "../uploads"));
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+
+const upload = multer({ storage });
 
 // Route handler for adding message with image upload
 router.post("/addEventItem", upload.single("image"), async (req, res) => {
   try {
-    const imageUrl = req.file
-      ? `/uploads/${req.file.filename}`
-      : "assets/images/photos/default-image.png";
+    // const imageUrl = req.file
+    //   ? `/uploads/${req.file.filename}`
+    //   : "assets/images/photos/default-image.png";
+    const imageUrl = "/assets/images/photos/home2.jpg";
 
     const item = new EventModel({
       name: req.body.name,
@@ -163,7 +174,6 @@ router.get(
 
 router.get("/getSupsAvailable/:date", async (req, res) => {
   const { date } = req.params;
-  console.log(date);
 
   try {
     const selectedDate = new Date(date);
