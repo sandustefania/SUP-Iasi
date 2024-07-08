@@ -98,10 +98,11 @@ export class RentSupComponent {
           this.router.navigateByUrl('/locations');
         },
         error: (error) => {
+          if(this.userService.currentUser.token){
           this.toastrService.error(
             `Eroare! Pentru data de ${shortDate} au mai ramas doar ${this.numberSupsAvailable} SUP-uri`
           );
-          
+        }
         },
       });
   }
