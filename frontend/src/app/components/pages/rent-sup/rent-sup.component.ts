@@ -76,6 +76,7 @@ export class RentSupComponent {
       this.toastrService.error(
         `Trebuie sa fiti logat in cont !`
       );
+      return;
     }
     let { name, email, phone } = this.userService.currentUser;
     const formValue = this.rentSupsForm.value;
