@@ -72,6 +72,11 @@ export class RentSupComponent {
   }
 
   submit() {
+    if(!this.userService.currentUser.token){
+      this.toastrService.error(
+        `Trebuie sa fiti logat in cont !`
+      );
+    }
     let { name, email, phone } = this.userService.currentUser;
     const formValue = this.rentSupsForm.value;
     const shortDate = this.formatDate(formValue.selectedDate);
@@ -93,9 +98,9 @@ export class RentSupComponent {
         },
         error: (error) => {
           this.toastrService.error(
-            'Pentru a rezerva, trebuie sa fiti conectat!'
+            `Eroare! Pentru data de ${shortDate} au mai ramas doar ${this.numberSupsAvailable} SUP-uri`
           );
-          this.router.navigateByUrl('/login');
+          
         },
       });
   }
@@ -105,6 +110,6 @@ export class RentSupComponent {
     const year = date.getFullYear();
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
     const day = ('0' + date.getDate()).slice(-2);
-    return `${year}-${month}-${day}`;
+    return `${day}-${month}-${year}`;
   }
 }
